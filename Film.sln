@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Film", "Film\Film.csproj", "{65C8DEDE-83DE-460D-8E9D-84A2C21BC7C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseProject.Web", "Film\CourseProject.Web.csproj", "{65C8DEDE-83DE-460D-8E9D-84A2C21BC7C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseProject.DB", "CourseProject.DB\CourseProject.DB.csproj", "{CE672467-D81E-474A-8BFF-9EA9C0341AFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseProject.DataAcces", "CourseProject.DataAcces\CourseProject.DataAcces.csproj", "{52737C82-DB26-4E76-8620-A284E6ED077A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{65C8DEDE-83DE-460D-8E9D-84A2C21BC7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65C8DEDE-83DE-460D-8E9D-84A2C21BC7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65C8DEDE-83DE-460D-8E9D-84A2C21BC7C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE672467-D81E-474A-8BFF-9EA9C0341AFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE672467-D81E-474A-8BFF-9EA9C0341AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE672467-D81E-474A-8BFF-9EA9C0341AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE672467-D81E-474A-8BFF-9EA9C0341AFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52737C82-DB26-4E76-8620-A284E6ED077A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52737C82-DB26-4E76-8620-A284E6ED077A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52737C82-DB26-4E76-8620-A284E6ED077A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52737C82-DB26-4E76-8620-A284E6ED077A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
