@@ -8,16 +8,10 @@ using System.Threading.Tasks;
 
 namespace CourseProject.DB.Entities
 {
-    class BaseEntity
+    public class BaseEntity : IBaseEntity<int, DateTime>
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime CreatedTime { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime UpdatedTime { get; set; }
     }
 }

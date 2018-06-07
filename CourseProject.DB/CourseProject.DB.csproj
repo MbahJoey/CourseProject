@@ -50,7 +50,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Director.cs" />
-    <Compile Include="Entities\Film.cs" />
+    <Compile Include="Entities\Movie.cs" />
     <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\IBaseEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

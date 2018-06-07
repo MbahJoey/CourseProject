@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,11 +48,46 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Migrations\201806071128486_InitialCreate.cs" />
+    <Compile Include="Migrations\201806071128486_InitialCreate.Designer.cs">
+      <DependentUpon>201806071128486_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806071344194_MoviesFixed.cs" />
+    <Compile Include="Migrations\201806071344194_MoviesFixed.Designer.cs">
+      <DependentUpon>201806071344194_MoviesFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806071411526_Movies.cs" />
+    <Compile Include="Migrations\201806071411526_Movies.Designer.cs">
+      <DependentUpon>201806071411526_Movies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MoviesDbContext.cs" />
+    <Compile Include="MyConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Migrations\" />
     <Folder Include="Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CourseProject.DB\CourseProject.DB.csproj">
+      <Project>{ce672467-d81e-474a-8bff-9ea9c0341afc}</Project>
+      <Name>CourseProject.DB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806071128486_InitialCreate.resx">
+      <DependentUpon>201806071128486_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806071344194_MoviesFixed.resx">
+      <DependentUpon>201806071344194_MoviesFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806071411526_Movies.resx">
+      <DependentUpon>201806071411526_Movies.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace CourseProject.DB.Entities
 {
-    class Director : BaseEntity
+    public class Director : BaseEntity
     {
         [Required, StringLength(50)]
-        public string DirName { get; set; }
+        public string DirectorName { get; set; }
 
-        [Required]
-        public int DirId { get; set; }
 
     }
 }

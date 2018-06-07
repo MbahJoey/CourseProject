@@ -8,15 +8,9 @@ using System.Threading.Tasks;
 
 namespace CourseProject.DB.Entities
 {
-    class Genre : BaseEntity
+    public class Genre : BaseEntity
     {
         [Required, StringLength(30)]
         public string GenreName { get; set; }
-
-        [Required]
-        public int GenreId { get; set; }
-
-        [Required, ForeignKey("GenreId")]
-        public virtual Genre Genre { get; }
     }
 }
