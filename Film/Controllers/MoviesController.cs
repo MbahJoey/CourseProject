@@ -57,7 +57,7 @@ namespace Film.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Director,Genre")] Movie movie)
+        public ActionResult Create([Bind(Include = "Id,Title,DirectorName,GenreName")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -89,11 +89,11 @@ namespace Film.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Director,Genre")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title,DirectorName,GenreName")] Movie movie)
         {
             if (ModelState.IsValid)
             {
-                uow.MovieRepository.Save(movie);
+                uow.MovieRepository.PromoteOrDemote(movie);
                 return RedirectToAction("Index");
             }
             return View(movie);

@@ -94,7 +94,7 @@ namespace Film.Controllers
         {
             if (ModelState.IsValid)
             {
-                uow.DirectorRepository.Save(director);
+                uow.DirectorRepository.PromoteOrDemote(director);
                 return RedirectToAction("Index");
             }
             return View(director);
