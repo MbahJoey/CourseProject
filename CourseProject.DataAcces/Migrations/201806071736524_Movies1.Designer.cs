@@ -7,13 +7,13 @@ namespace CourseProject.DataAcces.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Movies : IMigrationMetadata
+    public sealed partial class Movies1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Movies));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Movies1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201806071411526_Movies"; }
+            get { return "201806071736524_Movies1"; }
         }
         
         string IMigrationMetadata.Source

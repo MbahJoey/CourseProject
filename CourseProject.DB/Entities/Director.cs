@@ -9,7 +9,7 @@ namespace CourseProject.DB.Entities
 {
     public class Director : BaseEntity
     {
-        [Required, StringLength(50)]
+        [Required]
         public string DirectorName { get; set; }
 
 

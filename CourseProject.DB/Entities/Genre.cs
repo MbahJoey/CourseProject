@@ -10,7 +10,7 @@ namespace CourseProject.DB.Entities
 {
     public class Genre : BaseEntity
     {
-        [Required, StringLength(30)]
+        [Required]
         public string GenreName { get; set; }
     }
 }
