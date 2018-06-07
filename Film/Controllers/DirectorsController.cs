@@ -14,11 +14,22 @@ namespace Film.Controllers
     public class DirectorsController : Controller
     {
         private MoviesDbContext db = new MoviesDbContext();
+        private readonly UnitOfWork uow;
+
+        public DirectorsController()
+        {
+            uow = new UnitOfWork(new MoviesDbContext());
+        }
+
+        public DirectorsController(MoviesDbContext context)
+        {
+            uow = new UnitOfWork(context);
+        }
 
         // GET: Directors
         public ActionResult Index()
         {
-            return View(db.Directors.ToList());
+            return View(uow.DirectorRepository.GetAll());
         }
 
         // GET: Directors/Details/5
@@ -28,7 +39,7 @@ namespace Film.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Director director = db.Directors.Find(id);
+            Director director = uow.DirectorRepository.GetById((int)id);
             if (director == null)
             {
                 return HttpNotFound();
@@ -51,8 +62,8 @@ namespace Film.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Directors.Add(director);
-                db.SaveChanges();
+                uow.DirectorRepository.Create(director);
+                uow.DirectorRepository.Save(director);
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +77,7 @@ namespace Film.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Director director = db.Directors.Find(id);
+            Director director = uow.DirectorRepository.GetById((int)id);
             if (director == null)
             {
                 return HttpNotFound();
@@ -83,8 +94,7 @@ namespace Film.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(director).State = EntityState.Modified;
-                db.SaveChanges();
+                uow.DirectorRepository.Save(director);
                 return RedirectToAction("Index");
             }
             return View(director);
@@ -97,7 +107,7 @@ namespace Film.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Director director = db.Directors.Find(id);
+            Director director = uow.DirectorRepository.GetById((int)id);
             if (director == null)
             {
                 return HttpNotFound();
@@ -110,9 +120,9 @@ namespace Film.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Director director = db.Directors.Find(id);
-            db.Directors.Remove(director);
-            db.SaveChanges();
+            Director director = uow.DirectorRepository.GetById((int)id);
+            uow.DirectorRepository.DeleteByID(id);
+            uow.DirectorRepository.Save(director);
             return RedirectToAction("Index");
         }
 

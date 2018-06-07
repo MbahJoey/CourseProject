@@ -14,11 +14,22 @@ namespace Film.Controllers
     public class GenresController : Controller
     {
         private MoviesDbContext db = new MoviesDbContext();
+        private readonly UnitOfWork uow;
+
+        public GenresController()
+        {
+            uow = new UnitOfWork(new MoviesDbContext());
+        }
+
+        public GenresController(MoviesDbContext context)
+        {
+            uow = new UnitOfWork(context);
+        }
 
         // GET: Genres
         public ActionResult Index()
         {
-            return View(db.Genres.ToList());
+            return View(uow.GenreRepository.GetAll());
         }
 
         // GET: Genres/Details/5
@@ -28,7 +39,7 @@ namespace Film.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Genre genre = db.Genres.Find(id);
+            Genre genre = uow.GenreRepository.GetById((int)id);
             if (genre == null)
             {
                 return HttpNotFound();
@@ -51,8 +62,8 @@ namespace Film.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Genres.Add(genre);
-                db.SaveChanges();
+                uow.GenreRepository.Create(genre);
+                uow.GenreRepository.Save(genre);
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +77,7 @@ namespace Film.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Genre genre = db.Genres.Find(id);
+            Genre genre = uow.GenreRepository.GetById((int)id);
             if (genre == null)
             {
                 return HttpNotFound();
@@ -83,8 +94,7 @@ namespace Film.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(genre).State = EntityState.Modified;
-                db.SaveChanges();
+                uow.GenreRepository.Save(genre);
                 return RedirectToAction("Index");
             }
             return View(genre);
@@ -97,7 +107,7 @@ namespace Film.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Genre genre = db.Genres.Find(id);
+            Genre genre = uow.GenreRepository.GetById((int)id);
             if (genre == null)
             {
                 return HttpNotFound();
@@ -110,9 +120,9 @@ namespace Film.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Genre genre = db.Genres.Find(id);
-            db.Genres.Remove(genre);
-            db.SaveChanges();
+            Genre genre = uow.GenreRepository.GetById((int)id);
+            uow.GenreRepository.DeleteByID(id);
+            uow.GenreRepository.Save(genre);
             return RedirectToAction("Index");
         }
 

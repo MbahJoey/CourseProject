@@ -14,11 +14,21 @@ namespace Film.Controllers
     public class MoviesController : Controller
     {
         private MoviesDbContext db = new MoviesDbContext();
+        private readonly UnitOfWork uow;
 
+        public MoviesController()
+        {
+            uow = new UnitOfWork(new MoviesDbContext());
+        }
+
+        public MoviesController(MoviesDbContext context)
+        {
+            uow = new UnitOfWork(context);
+        }
         // GET: Movies
         public ActionResult Index()
         {
-            return View(db.Movies.ToList());
+            return View(uow.MovieRepository.GetAll());
         }
 
         // GET: Movies/Details/5
@@ -28,7 +38,7 @@ namespace Film.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            Movie movie = uow.MovieRepository.GetById((int)id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -47,12 +57,12 @@ namespace Film.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Title,DirectorName,GenreName")] Movie movie)
+        public ActionResult Create([Bind(Include = "Id,Title,Director,Genre")] Movie movie)
         {
             if (ModelState.IsValid)
             {
-                db.Movies.Add(movie);
-                db.SaveChanges();
+                uow.MovieRepository.Create(movie);
+                uow.MovieRepository.Save(movie);
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +76,7 @@ namespace Film.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            Movie movie = uow.MovieRepository.GetById((int)id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -79,12 +89,11 @@ namespace Film.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,DirectorName,GenreName")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title,Director,Genre")] Movie movie)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(movie).State = EntityState.Modified;
-                db.SaveChanges();
+                uow.MovieRepository.Save(movie);
                 return RedirectToAction("Index");
             }
             return View(movie);
@@ -97,7 +106,7 @@ namespace Film.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            Movie movie = uow.MovieRepository.GetById((int)id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -110,9 +119,9 @@ namespace Film.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Movie movie = db.Movies.Find(id);
-            db.Movies.Remove(movie);
-            db.SaveChanges();
+            Movie movie = uow.MovieRepository.GetById((int)id);
+            uow.MovieRepository.DeleteByID(id);
+            uow.MovieRepository.Save(movie);
             return RedirectToAction("Index");
         }
 
