@@ -229,6 +229,11 @@
     <Content Include="Views\Directors\Details.cshtml" />
     <Content Include="Views\Directors\Edit.cshtml" />
     <Content Include="Views\Directors\Index.cshtml" />
+    <Content Include="Views\Movies1\Create.cshtml" />
+    <Content Include="Views\Movies1\Delete.cshtml" />
+    <Content Include="Views\Movies1\Details.cshtml" />
+    <Content Include="Views\Movies1\Edit.cshtml" />
+    <Content Include="Views\Movies1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

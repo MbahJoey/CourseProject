@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseProject.DB", "CourseP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseProject.DataAcces", "CourseProject.DataAcces\CourseProject.DataAcces.csproj", "{52737C82-DB26-4E76-8620-A284E6ED077A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.REST", "Movies.REST\Movies.REST.csproj", "{315EA1B7-3076-4033-8DF0-959951AFFD95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.SOAP", "Movies.SOAP\Movies.SOAP.csproj", "{73182119-93C1-4F77-978B-F03643305E9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{52737C82-DB26-4E76-8620-A284E6ED077A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52737C82-DB26-4E76-8620-A284E6ED077A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52737C82-DB26-4E76-8620-A284E6ED077A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{315EA1B7-3076-4033-8DF0-959951AFFD95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{315EA1B7-3076-4033-8DF0-959951AFFD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{315EA1B7-3076-4033-8DF0-959951AFFD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{315EA1B7-3076-4033-8DF0-959951AFFD95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73182119-93C1-4F77-978B-F03643305E9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73182119-93C1-4F77-978B-F03643305E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73182119-93C1-4F77-978B-F03643305E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73182119-93C1-4F77-978B-F03643305E9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

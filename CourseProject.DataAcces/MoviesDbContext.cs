@@ -13,7 +13,7 @@ namespace CourseProject.DataAcces
         public DbSet<Director> Directors { get; set; }
 
         public MoviesDbContext()
-        {
+        {   
             
         }
     }
